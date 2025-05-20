@@ -67,6 +67,7 @@ nav button {
   font-weight: bolder;
   font-size: 48px;
   text-align: center;
+  
 }
 
 .hero> :nth-child(2) {
@@ -88,6 +89,14 @@ nav button {
   z-index: 20;
 }
 
+.btn,
+.btn-red,
+.btn-red-sm,
+.faqbox,
+.footer a {
+  transition: all 0.3s ease;
+}
+
 .btn {
   padding: 3px 8px;
   font-weight: 400;
@@ -96,7 +105,10 @@ nav button {
   border-radius: 4px;
   border: 1px solid white;
   cursor: pointer;
+}
 
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .btn-red {
@@ -106,6 +118,11 @@ nav button {
   font-size: 20px;
   border-radius: 4px;
   font-weight: 400;
+}
+
+.btn-red:hover,
+.btn-red-sm:hover {
+  background-color: rgb(200, 0, 0);
 }
 
 .btn-red-sm {
@@ -135,20 +152,16 @@ nav button {
   max-width: 70vw;
   margin: auto;
   color: white;
-  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
-
-
-
-
 
 .secImg {
   position: relative;
 }
 
 .secImg img {
-  width: 555px;
+  width: 305px;
   position: relative;
   z-index: 10;
 }
@@ -157,35 +170,33 @@ nav button {
   position: absolute;
   top: 51px;
   right: 0;
-  width: 555px;
+  width: 305px;
 }
 
-
-section.first>div {
+section.first > div {
   display: flex;
   flex-direction: column;
   padding: 34px 0;
 }
 
-section.first>div :nth-child(1) {
+section.first > div :nth-child(1) {
   font-size: 48px;
   font-weight: bolder;
 }
 
-section.first>div :nth-child(2) {
+section.first > div :nth-child(2) {
   font-size: 24px;
-
-}
-
-.faq h2 {
-  text-align: center;
-  font-size: 48px;
 }
 
 .faq {
   background-color: black;
   color: white;
   padding: 34px;
+}
+
+.faq h2 {
+  text-align: center;
+  font-size: 48px;
 }
 
 .faqbox {
@@ -197,8 +208,7 @@ section.first>div :nth-child(2) {
   background-color: #2d2d2d;
   font-size: 24px;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
-
+  position: relative;
 }
 
 .faqbox svg {
@@ -209,99 +219,34 @@ section.first>div :nth-child(2) {
   background-color: #414141;
 }
 
-.footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+/* FAQ accordion effect */
+.faqbox::after {
+  content: '▼';
+  font-size: 18px;
+  margin-left: auto;
   color: white;
-
 }
 
-
-@media screen and (max-width: 1300px) {
-
-  nav {
-    max-width: 90vw;
-  }
-
-  .first {
-    flex-wrap: wrap;
-  }
-
-  .secImg img {
-    width: 305px;
-  }
-
-  .secImg video {
-    width: 305px;
-  }
-
-  .hero> :nth-child(1) {
-    font-size: 32px;
-  }
-
-  .hero> :nth-child(2) {
-    font-size: 18px;
-  }
-
-  .hero> :nth-child(3) {
-    font-size: 18px;
-  }
-
-  .hero-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-  }
-
-  .faq h2 {
-    text-align: center;
-    font-size: 32px;
-  }
-
-  footer {
-    max-width: 90vw;
-    padding: 75px 0;
-  }
-
-  .footer-item {
-    align-items: center;
-  }
-
-
+.faqbox.active {
+  background-color: #414141;
 }
 
-
-
-@media screen and (max-width: 1300px) {
-
-  .footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-  }
+.faqbox.active::after {
+  content: '▲';
 }
 
-
-.secImg img {
-  width: 305px;
-
-}
-
-.secImg video {
-
-  width: 305px;
-}
-
-
-
-
+/* Footer */
 footer {
   color: white;
   max-width: 60vw;
   margin: auto;
   padding: 14px;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  color: white;
 }
 
 .footer-item {
@@ -313,9 +258,50 @@ footer {
 .footer a {
   color: white;
   font-size: 14px;
+}
 
+.footer a:hover {
+  text-decoration: underline;
 }
 
 footer .questions {
   padding: 34px 0;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 1300px) {
+  nav {
+    max-width: 90vw;
+  }
+
+  .first {
+    flex-wrap: wrap;
+  }
+
+  .hero> :nth-child(1) {
+    font-size: 32px;
+  }
+
+  .hero> :nth-child(2),
+  .hero> :nth-child(3) {
+    font-size: 18px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .faq h2 {
+    font-size: 32px;
+  }
+
+  footer {
+    max-width: 90vw;
+    padding: 75px 0;
+  }
+
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
 }
